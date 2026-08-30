@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download GrokRouter for macOS or Windows and bring your own model to Grok Bot.">
+  <meta name="theme-color" content="#181716">
+  <title>Download GrokRouter</title>
+  <link rel="icon" href="assets/grokrouter-mascot.png">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #f4f2ee;
+      --surface: #e9e6df;
+      --surface-strong: #dedad1;
+      --ink: #181716;
+      --muted: #625e57;
+      --line: #cbc5bb;
+      --accent: #e86922;
+      --accent-hover: #c95112;
+      --accent-ink: #18120f;
+      --shadow: rgba(38, 27, 20, 0.16);
+      --radius: 18px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #111211;
+        --surface: #1b1d1c;
+        --surface-strong: #252826;
+        --ink: #f1efe9;
+        --muted: #aaa69e;
+        --line: #343734;
+        --accent: #ff7829;
+        --accent-hover: #ff914f;
+        --accent-ink: #1b110a;
+        --shadow: rgba(0, 0, 0, 0.34);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      object-fit: cover;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .nav-link:hover { color: var(--ink); }
+
+    .hero {
+      min-height: calc(100dvh - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      align-items: center;
+      gap: clamp(48px, 7vw, 100px);
+      padding: 64px 0;
+    }
+
+    .hero-copy { max-width: 680px; }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(50px, 7vw, 84px);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+      font-weight: 820;
+    }
+
+    .lede {
+      max-width: 590px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 760;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 12px 30px var(--shadow);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover { background: var(--accent-hover); }
+    .button:active { transform: translateY(1px) scale(0.99); }
+    .button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent), transparent 45%); outline-offset: 3px; }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .button.secondary:hover { background: var(--surface); }
+    .button[aria-disabled="true"] { opacity: 0.62; pointer-events: none; }
+
+    .download-note {
+      min-height: 24px;
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .download-note strong { color: var(--ink); }
+    .download-note.error { color: #b44a2a; }
+
+    .hero-art {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--accent), transparent 74%), transparent 42%),
+        var(--surface);
+      box-shadow: 0 28px 90px var(--shadow);
+    }
+
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid color-mix(in srgb, var(--line), transparent 22%);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .hero-art img {
+      position: relative;
+      z-index: 1;
+      width: min(76%, 380px);
+      height: auto;
+      border-radius: var(--radius);
+      filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.25));
+    }
+
+    .section {
+      padding: 104px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .step {
+      min-height: 210px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .step strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.035em;
+    }
+
+    .step p {
+      max-width: 48ch;
+      margin: 14px 0 0;
+      color: var(--muted);
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(40px, 8vw, 110px);
+      align-items: start;
+    }
+
+    .trust-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .trust-list li {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-list li:first-child { padding-top: 0; }
+    .trust-list strong { display: block; margin-bottom: 5px; }
+    .trust-list span { color: var(--muted); }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 34px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer a:hover { color: var(--ink); }
+
+    @media (max-width: 820px) {
+      .shell { width: min(100% - 28px, 680px); }
+      .nav { min-height: 64px; }
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 44px;
+        padding: 64px 0 72px;
+      }
+      h1 { font-size: clamp(48px, 15vw, 68px); }
+      .hero-art { min-height: 390px; }
+      .section { padding: 76px 0; }
+      .steps, .trust { grid-template-columns: 1fr; }
+      .step { min-height: 0; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-link { display: none; }
+      .actions { align-items: stretch; flex-direction: column; }
+      .button { width: 100%; }
+      .hero-art { min-height: 330px; }
+      .step { padding: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell nav">
+    <a class="brand" href="#top" aria-label="GrokRouter home">
+      <img src="assets/grokrouter-mascot.png" width="76" height="76" alt="">
+      <span>GrokRouter</span>
+    </a>
+    <a class="nav-link" href="https://github.com/promptadvisers/grokrouter-downloads/releases/latest">All downloads</a>
+  </header>
+
+  <main id="top">
+    <section class="shell hero">
+      <div class="hero-copy">
+        <h1>Bring your own model to Grok Bot.</h1>
+        <p class="lede">Install once. Keep Grok Bot's chat, Bots, files and computer. Choose Codex or OpenRouter for each Bot.</p>
+        <div class="actions">
+          <a id="primary-download" class="button" href="https://github.com/promptadvisers/grokrouter-downloads/releases/latest" aria-disabled="true">Finding your download</a>
+          <a class="button secondary" href="https://github.com/promptadvisers/grokrouter-downloads/releases/latest">All downloads</a>
+        </div>
+        <p id="download-note" class="download-note" role="status" aria-live="polite">Checking the latest signed release.</p>
+      </div>
+      <div class="hero-art" aria-label="GrokRouter mascot wearing a black snapback">
+        <img src="assets/grokrouter-mascot.png" width="1024" height="1024" alt="GrokRouter mascot wearing a black snapback">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <h2>Four things. Then just chat.</h2>
+        <p class="section-intro">You never need to clone a repository, open Terminal, or replace Grok Bot yourself.</p>
+        <div class="steps">
+          <article class="step">
+            <strong>Install GrokRouter</strong>
+            <p>On Mac, drag it into Applications. On Windows, run setup and open it from the Start menu.</p>
+          </article>
+          <article class="step">
+            <strong>Open Grok Bot</strong>
+            <p>Leave Grok Bot visible. If asked, select any Bot and click Open computer so GrokRouter can finish safely.</p>
+          </article>
+          <article class="step">
+            <strong>Choose your model</strong>
+            <p>Select Codex, OpenRouter, or both. Add an OpenRouter key only if you want to use OpenRouter models.</p>
+          </article>
+          <article class="step">
+            <strong>Click Install Router</strong>
+            <p>Create a new Bot when it finishes. Send <code>/router doctor</code>, then chat normally inside Grok Bot.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell trust">
+        <div>
+          <h2>Safe to try. Simple to undo.</h2>
+          <p class="section-intro">GrokRouter checks the exact Grok Bot version, keeps a verified stock backup, and refuses unknown builds.</p>
+        </div>
+        <ul class="trust-list">
+          <li><strong>Signed downloads</strong><span>Mac releases are notarized. Windows releases show a verified publisher.</span></li>
+          <li><strong>Your key stays protected</strong><span>OpenRouter keys go directly into Grok Bot's protected Secrets store.</span></li>
+          <li><strong>One-click restore</strong><span>Restore Stock Grok Bot puts the original model path back.</span></li>
+          <li><strong>No broad Mac permissions</strong><span>No Accessibility, Screen Recording, or Full Disk Access request.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>GrokRouter is unofficial and is not affiliated with xAI or the model providers it supports.</span>
+    <span><a href="SECURITY.md">Security</a> &nbsp; <a href="LICENSE.md">License</a></span>
+  </footer>
+
+  <script>
+    (() => {
+      const repository = "promptadvisers/grokrouter-downloads";
+      const releasesUrl = `https://github.com/${repository}/releases/latest`;
+      const primary = document.getElementById("primary-download");
+      const note = document.getElementById("download-note");
+
+      const userAgent = navigator.userAgent || "";
+      const platform = navigator.userAgentData?.platform || navigator.platform || "";
+      const isWindows = /Windows|Win/i.test(`${platform} ${userAgent}`);
+      const isMac = /macOS|Mac/i.test(`${platform} ${userAgent}`) && !/iPhone|iPad|iPod/i.test(userAgent);
+      const isArmWindows = isWindows && /ARM64|aarch64/i.test(userAgent);
+
+      function selectAsset(assets) {
+        if (isMac) return assets.find((asset) => /-macos\.dmg$/i.test(asset.name));
+        if (isWindows && isArmWindows) return assets.find((asset) => /-windows-arm64-setup\.exe$/i.test(asset.name));
+        if (isWindows) return assets.find((asset) => /-windows-x64-setup\.exe$/i.test(asset.name));
+        return null;
+      }
+
+      fetch(`https://api.github.com/repos/${repository}/releases/latest`, {
+        headers: { Accept: "application/vnd.github+json" }
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("No public release is available yet.");
+          return response.json();
+        })
+        .then((release) => {
+          const asset = selectAsset(release.assets || []);
+          if (asset) {
+            primary.href = asset.browser_download_url;
+            primary.textContent = isMac ? "Download for Mac" : (isArmWindows ? "Download for Windows Arm" : "Download for Windows");
+            primary.removeAttribute("aria-disabled");
+            const megabytes = Math.max(1, Math.round(asset.size / 1024 / 1024));
+            note.innerHTML = `<strong>${release.name || release.tag_name}</strong> for ${isMac ? "Apple silicon Mac" : "Windows"}, ${megabytes} MB.`;
+          } else {
+            primary.href = releasesUrl;
+            primary.textContent = "Choose a download";
+            primary.removeAttribute("aria-disabled");
+            note.textContent = "Choose your operating system and architecture on the release page.";
+          }
+        })
+        .catch(() => {
+          primary.href = releasesUrl;
+          primary.textContent = "View release status";
+          primary.removeAttribute("aria-disabled");
+          note.classList.add("error");
+          note.textContent = "The signed public download is not available yet. Do not install an unsigned copy.";
+        });
+    })();
+  </script>
+</body>
+</html>
