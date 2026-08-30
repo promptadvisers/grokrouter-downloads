@@ -1,20 +1,17 @@
-# GrokRouter downloads
+# GrokRouter moved to public source
 
-This public repository contains official signed GrokRouter binary releases and the viewer-facing download page.
+GrokRouter is now available directly from its public, Mac-only source repository:
 
-## Download
+<https://github.com/promptadvisers/grokrouter>
 
-Open <https://promptadvisers.github.io/grokrouter-downloads/>. The page detects macOS or Windows and selects the latest compatible installer.
+The main repository contains the full implementation, security boundary, evidence, and simple installation steps near the top of its README. It builds the native app locally on an Apple silicon Mac instead of distributing an unsigned binary.
 
-- macOS: open the DMG and drag GrokRouter into Applications.
-- Windows: run the setup file and open GrokRouter from the Start menu.
-
-Do not install a copy if macOS cannot verify the developer or Windows shows an unknown publisher.
+Windows is not supported.
 
 ## What GrokRouter does
 
 GrokRouter is an unofficial, reversible adapter for the supported Grok Bot desktop release. It keeps Grok Bot's chat, Bots, files, computer and permission boundary, while allowing each Bot to use Codex or a configured OpenRouter model.
 
-The implementation source remains private. This repository contains no provider credentials, user data, Grok Bot proprietary source, or private development history.
+This redirect repository contains no provider credentials, user data, Grok Bot proprietary source, or private development history.
 
 Read [Security](SECURITY.md) and [License](LICENSE.md) before installing.

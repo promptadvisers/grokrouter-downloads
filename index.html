@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Download GrokRouter for macOS or Windows and bring your own model to Grok Bot.">
+  <meta name="description" content="Get the public GrokRouter source for Apple silicon Macs and bring your own model to Grok Bot.">
   <meta name="theme-color" content="#181716">
-  <meta property="og:title" content="Download GrokRouter">
-  <meta property="og:description" content="Bring your own model to Grok Bot. Download the signed installer for Mac or Windows.">
+  <meta property="og:title" content="GrokRouter public source">
+  <meta property="og:description" content="Bring your own model to Grok Bot. Inspect and install GrokRouter from its public Mac source.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://promptadvisers.github.io/grokrouter-downloads/">
   <meta property="og:image" content="https://promptadvisers.github.io/grokrouter-downloads/assets/grokrouter-mascot.png">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Download GrokRouter">
-  <meta name="twitter:description" content="Bring your own model to Grok Bot. Download the signed installer for Mac or Windows.">
+  <meta name="twitter:title" content="GrokRouter public source">
+  <meta name="twitter:description" content="Bring your own model to Grok Bot. Inspect and install GrokRouter from its public Mac source.">
   <meta name="twitter:image" content="https://promptadvisers.github.io/grokrouter-downloads/assets/grokrouter-mascot.png">
   <link rel="canonical" href="https://promptadvisers.github.io/grokrouter-downloads/">
-  <title>Download GrokRouter</title>
+  <title>GrokRouter public source</title>
   <link rel="icon" href="assets/grokrouter-mascot.png">
   <style>
     :root {
@@ -333,7 +333,7 @@
       <img src="assets/grokrouter-mascot.png" width="76" height="76" alt="">
       <span>GrokRouter</span>
     </a>
-    <a class="nav-link" href="https://github.com/promptadvisers/grokrouter-downloads/releases">All downloads</a>
+    <a class="nav-link" href="https://github.com/promptadvisers/grokrouter">Public repository</a>
   </header>
 
   <main id="top">
@@ -342,10 +342,10 @@
         <h1>Bring your own model to Grok Bot.</h1>
         <p class="lede">Install once. Keep Grok Bot's chat, Bots, files and computer. Choose Codex or OpenRouter for each Bot.</p>
         <div class="actions">
-          <a id="primary-download" class="button" href="https://github.com/promptadvisers/grokrouter-downloads/releases" aria-disabled="true">Finding your download</a>
-          <a class="button secondary" href="https://github.com/promptadvisers/grokrouter-downloads/releases">All downloads</a>
+          <a class="button" href="https://github.com/promptadvisers/grokrouter">Open the public repo</a>
+          <a class="button secondary" href="https://github.com/promptadvisers/grokrouter#install-on-mac">See the Mac steps</a>
         </div>
-        <p id="download-note" class="download-note" role="status" aria-live="polite">Checking the latest signed release.</p>
+        <p class="download-note"><strong>Mac-only.</strong> GrokRouter now builds locally from its inspectable public source.</p>
       </div>
       <div class="hero-art" aria-label="GrokRouter mascot wearing a black snapback">
         <img src="assets/grokrouter-mascot.png" width="1024" height="1024" alt="GrokRouter mascot wearing a black snapback">
@@ -355,23 +355,23 @@
     <section class="section">
       <div class="shell">
         <h2>Four things. Then just chat.</h2>
-        <p class="section-intro">You never need to clone a repository, open Terminal, or replace Grok Bot yourself.</p>
+        <p class="section-intro">The README walks you through one Mac command, then the normal GrokRouter app does the rest.</p>
         <div class="steps">
           <article class="step">
-            <strong>Install GrokRouter</strong>
-            <p>On Mac, drag it into Applications. On Windows, run setup and open it from the Start menu.</p>
+            <strong>Open the repository</strong>
+            <p>Read the short Mac quick start and inspect the installer source if you want to see exactly what runs.</p>
+          </article>
+          <article class="step">
+            <strong>Run the Mac command</strong>
+            <p>Paste one command into Terminal. Your Mac builds GrokRouter locally and opens it from your Applications folder.</p>
           </article>
           <article class="step">
             <strong>Open Grok Bot</strong>
             <p>Leave Grok Bot visible. If asked, select any Bot and click Open computer so GrokRouter can finish safely.</p>
           </article>
           <article class="step">
-            <strong>Choose your model</strong>
-            <p>Select Codex, OpenRouter, or both. Add an OpenRouter key only if you want to use OpenRouter models.</p>
-          </article>
-          <article class="step">
             <strong>Click Install Router</strong>
-            <p>Create a new Bot when it finishes. Send <code>/router doctor</code>, then chat normally inside Grok Bot.</p>
+            <p>Choose Codex or OpenRouter, install, then create a new Bot and send <code>/router doctor</code>.</p>
           </article>
         </div>
       </div>
@@ -384,7 +384,7 @@
           <p class="section-intro">GrokRouter checks the exact Grok Bot version, keeps a verified stock backup, and refuses unknown builds.</p>
         </div>
         <ul class="trust-list">
-          <li><strong>Signed downloads</strong><span>Mac releases are notarized. Windows releases show a verified publisher.</span></li>
+          <li><strong>Inspectable source</strong><span>Your Mac compiles the public Swift app locally. No unsigned downloaded app is distributed.</span></li>
           <li><strong>Your key stays protected</strong><span>OpenRouter keys go directly into Grok Bot's protected Secrets store.</span></li>
           <li><strong>One-click restore</strong><span>Restore Stock Grok Bot puts the original model path back.</span></li>
           <li><strong>No broad Mac permissions</strong><span>No Accessibility, Screen Recording, or Full Disk Access request.</span></li>
@@ -395,64 +395,7 @@
 
   <footer class="shell footer">
     <span>GrokRouter is unofficial and is not affiliated with xAI or the model providers it supports.</span>
-    <span><a href="https://github.com/promptadvisers/grokrouter-downloads/blob/main/SECURITY.md">Security</a> &nbsp; <a href="https://github.com/promptadvisers/grokrouter-downloads/blob/main/LICENSE.md">License</a></span>
+    <span><a href="https://github.com/promptadvisers/grokrouter/blob/main/SECURITY.md">Security</a> &nbsp; <a href="https://github.com/promptadvisers/grokrouter/blob/main/LICENSE.md">License</a></span>
   </footer>
-
-  <script>
-    (() => {
-      const repository = "promptadvisers/grokrouter-downloads";
-      const releasesUrl = `https://github.com/${repository}/releases`;
-      const primary = document.getElementById("primary-download");
-      const note = document.getElementById("download-note");
-
-      const userAgent = navigator.userAgent || "";
-      const platform = navigator.userAgentData?.platform || navigator.platform || "";
-      const isWindows = /Windows|Win/i.test(`${platform} ${userAgent}`);
-      const isMac = /macOS|Mac/i.test(`${platform} ${userAgent}`) && !/iPhone|iPad|iPod/i.test(userAgent);
-      const isArmWindows = isWindows && /ARM64|aarch64/i.test(userAgent);
-
-      function selectAsset(assets) {
-        if (isMac) return assets.find((asset) => /-macos\.dmg$/i.test(asset.name));
-        if (isWindows && isArmWindows) return assets.find((asset) => /-windows-arm64-setup\.exe$/i.test(asset.name));
-        if (isWindows) return assets.find((asset) => /-windows-x64-setup\.exe$/i.test(asset.name));
-        return null;
-      }
-
-      fetch(`https://api.github.com/repos/${repository}/releases/latest`, {
-        headers: { Accept: "application/vnd.github+json" }
-      })
-        .then((response) => {
-          if (!response.ok) throw new Error("No public release is available yet.");
-          return response.json();
-        })
-        .then((release) => {
-          const asset = selectAsset(release.assets || []);
-          if (asset) {
-            primary.href = asset.browser_download_url;
-            primary.textContent = isMac ? "Download for Mac" : (isArmWindows ? "Download for Windows Arm" : "Download for Windows");
-            primary.removeAttribute("aria-disabled");
-            const megabytes = Math.max(1, Math.round(asset.size / 1024 / 1024));
-            note.innerHTML = `<strong>${release.name || release.tag_name}</strong> for ${isMac ? "Apple silicon Mac" : "Windows"}, ${megabytes} MB.`;
-          } else if (isWindows) {
-            primary.href = releasesUrl;
-            primary.textContent = "Windows coming soon";
-            primary.removeAttribute("aria-disabled");
-            note.textContent = "The Windows installer is still in preview and will appear here after its real-device safety checks pass.";
-          } else {
-            primary.href = releasesUrl;
-            primary.textContent = "Choose a download";
-            primary.removeAttribute("aria-disabled");
-            note.textContent = "Choose your operating system and architecture on the release page.";
-          }
-        })
-        .catch(() => {
-          primary.href = releasesUrl;
-          primary.textContent = "View release status";
-          primary.removeAttribute("aria-disabled");
-          note.classList.add("error");
-          note.textContent = "The signed public download is not available yet. Do not install an unsigned copy.";
-        });
-    })();
-  </script>
 </body>
 </html>
