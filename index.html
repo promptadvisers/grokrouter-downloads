@@ -433,6 +433,11 @@
             primary.removeAttribute("aria-disabled");
             const megabytes = Math.max(1, Math.round(asset.size / 1024 / 1024));
             note.innerHTML = `<strong>${release.name || release.tag_name}</strong> for ${isMac ? "Apple silicon Mac" : "Windows"}, ${megabytes} MB.`;
+          } else if (isWindows) {
+            primary.href = releasesUrl;
+            primary.textContent = "Windows coming soon";
+            primary.removeAttribute("aria-disabled");
+            note.textContent = "The Windows installer is still in preview and will appear here after its real-device safety checks pass.";
           } else {
             primary.href = releasesUrl;
             primary.textContent = "Choose a download";
